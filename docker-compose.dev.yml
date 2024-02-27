@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  info_network_api_dev:
+    container_name: info_network_api_dev
+    image: info_network_api_dev:1.0.0
+    build:
+      context: .
+      target: development
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - ./:/usr/src/app
+    command: npm run start:dev
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
