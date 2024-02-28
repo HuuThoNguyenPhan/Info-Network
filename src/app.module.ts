@@ -13,18 +13,18 @@ import * as Joi from 'joi';
           .valid('development', 'production', 'test', 'provision', 'staging')
           .default('development'),
         PORT: Joi.number().port().required(),
-        DATABASE_PORT: Joi.number().port().required()
+        DATABASE_PORT: Joi.number().port().required(),
       }),
       validationOptions: {
-				abortEarly: false,
-			},
+        abortEarly: false,
+      },
       load: [database_config],
       isGlobal: true,
       expandVariables: true,
       envFilePath: process.env.NODE_ENV === 'development' ? '.env.dev' : '.env',
-    })
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

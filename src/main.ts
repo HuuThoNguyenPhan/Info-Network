@@ -9,9 +9,9 @@ async function bootstrap() {
   const logger = new Logger(bootstrap.name);
   const app = await NestFactory.create(AppModule);
   const config_service = app.get(ConfigService);
-  var database_env = config_service.get<DatabaseConfig>('database');
+  const database_env = config_service.get<DatabaseConfig>('database');
   logger.debug(database_env);
-  await app.listen(config_service.get('PORT'), () =>
+  await app.listen(config_service.get('PORT'), () => 
     logger.log(`Application running on port ${config_service.get('PORT')}`)
   );
 }
